@@ -1,4 +1,4 @@
-[Alina Recommendation](http://alinapi.com/) — Javascript-based  Recommendation Engine (Hosted in the Alina Inteliigence Cloud)
+[Alina Recommendation](http://alinapi.com/) — Javascript-based  Recommendation Engine (Hosted in the Alina Intelligence Cloud)
 ==================================================
 
 Contribution Guides
