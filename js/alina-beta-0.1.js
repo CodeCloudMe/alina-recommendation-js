@@ -1,7 +1,6 @@
 
 function alina(type){
 
-
 	switch (type){
 		case "recommendation":
 			var recommendation=true;
