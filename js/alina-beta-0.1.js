@@ -15,7 +15,7 @@ function alina(type){
 	if(!window.jQuery){
 		   var script = document.createElement('script');
 		   script.type = "text/javascript";
-		   script.src = "http://code.jquery.com/jquery-1.11.1.min.js";
+		   script.src = "https://code.jquery.com/jquery-1.11.1.min.js";
 		   document.getElementsByTagName('head')[0].appendChild(script);
 	}
 
@@ -30,7 +30,7 @@ function alina(type){
 
 			$(selector).each(function(){
 				productId = $(selector).html();
-				$.getJSON('http://alinapi.com/cloud/models/recommend/?callback=?','productId='+productId,
+				$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/recommend/?callback=?','productId='+productId,
 					function(res){
    						 console.log(res)
 					});
@@ -44,7 +44,7 @@ function alina(type){
 
 			productId = pref.split(endSearch)[0];
 			
-			$.getJSON('http://alinapi.com/cloud/models/recommend/?productId='+productId+'&callback=?',
+			$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/recommend/?productId='+productId+'&callback=?',
 					function(res){
    						 console.log(res)
 					});
@@ -61,7 +61,7 @@ function alina(type){
 
 				$(i).on(settings.hotspots[i][j]['action'], settings.hotspots[i][j], function(event){
 					
-					$.getJSON('http://alinapi.com/cloud/models/recommend/?rating='+event.data['rating']+'&action='+event.data['action']+'&productId='+event.data['productId']+'&callback=?',function(res){
+					$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/recommend/?rating='+event.data['rating']+'&action='+event.data['action']+'&productId='+event.data['productId']+'&callback=?',function(res){
     				
     						console.log(res);
 					});
@@ -79,7 +79,7 @@ function alina(type){
 
 		setTimeout(function(){
 
-			$.getJSON('http://alinapi.com/cloud/models/activity/?productId='+productId+'&callback=?',function(res){
+			$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/activity/?productId='+productId+'&callback=?',function(res){
     				
     				alinaCallback5555(res);
 			});
