@@ -21,19 +21,28 @@ function alina(type){
 
 	this.recommend = function(settings){
 
+
 		//get productIds
-		var productId;
+		var productId="";
+		var productIds ="";
 
 		if(settings.productDetection=="selectors"){
 			var selector = settings.productIds;
 
 			$(selector).each(function(){
-				productId = $(selector).html();
-				$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/recommend/?callback=?','productId='+productId,
-					function(res){
-   						 console.log(res)
-					});
+				productIds = productIds + $(this).html() +",";
+				
 			})
+			if(productIds !=""){
+
+				$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/recommend/?monitorOnly='+settings.monitorOnly+'&callback=?','productId='+productIds,
+					function(res){
+   						// console.log(res)
+
+   						alinaCallback5555(res);
+					});
+			}
+			productId= $(selector).html();
 			
 		}
 		else{
@@ -43,9 +52,9 @@ function alina(type){
 
 			productId = pref.split(endSearch)[0];
 			
-			$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/recommend/?productId='+productId+'&callback=?',
+			$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/recommend/?monitorOnly='+settings.monitorOnly+'&productId='+productId+'&callback=?',
 					function(res){
-   						 console.log(res)
+   						 alinaCallback5555(res);
 					});
 		}
 		for(i in settings.hotspots){
@@ -75,7 +84,7 @@ function alina(type){
 		else{
 		alinaCallback5555= settings.callback;
 		}
-
+		/*
 		setTimeout(function(){
 
 			$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/activity/?productId='+productId+'&callback=?',function(res){
@@ -83,10 +92,55 @@ function alina(type){
     				alinaCallback5555(res);
 			});
 		}, 200);
+
+		*/
 	}
 
 
 }
+
+
+//example implimentation:
+/*
+
+$(window).load(function(){
+	
+
+	var rec= new alina('recommendation');
+	rec.recommend({
+		
+		//monitorOnly is simply for training and not recieving recommendations back
+		monitorOnly:true
+		productDetection:'selectors', //this vs pre-suff
+		productIds:'.productId', //vs products/.../.html
+		
+
+
+		//productDetection:'pre-suff', //this vs pre-suff
+		//productIds:'product=...&', //vs products/.../.html
+
+		callback:showThem,
+		hotspots:{
+			"button":[{"action":"click", "rating":4, "productId":'.455'},
+					{"action":"hover", "rating":4}],
+			".selector":[{"action":"click", "rating":4},
+					{"action":"hover", "rating":5}]		
+			
+
+		}
+	});
+
+})
+
+
+function showThem(param){
+	console.log(param);
+
+}
+
+*/
+
+
 
 
 //example implimentation:
