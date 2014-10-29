@@ -69,7 +69,7 @@ function alina(type){
 
 				$(i).on(settings.hotspots[i][j]['action'], settings.hotspots[i][j], function(event){
 					
-					$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/recommend/?rating='+event.data['rating']+'&action='+event.data['action']+'&productId='+event.data['productId']+'&callback=?',function(res){
+					$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/recommend/?monitorOnly=true&rating='+event.data['rating']+'&action='+event.data['action']+'&productId='+event.data['productId']+'&callback=?',function(res){
     				
     						console.log(res);
 					});
@@ -84,16 +84,7 @@ function alina(type){
 		else{
 		alinaCallback5555= settings.callback;
 		}
-		/*
-		setTimeout(function(){
-
-			$.getJSON('https://alan-maybe588.rhcloud.com/cloud/models/activity/?productId='+productId+'&callback=?',function(res){
-    				
-    				alinaCallback5555(res);
-			});
-		}, 200);
-
-		*/
+	
 	}
 
 
@@ -143,41 +134,5 @@ function showThem(param){
 
 
 
-//example implimentation:
-/*
 
-$(window).load(function(){
-	
-
-	var rec= new alina('recommendation');
-	rec.recommend({
-		
-		productDetection:'selectors', //this vs pre-suff
-		productIds:'.productId', //vs products/.../.html
-		
-
-
-		//productDetection:'pre-suff', //this vs pre-suff
-		//productIds:'product=...&', //vs products/.../.html
-
-		callback:showThem,
-		hotspots:{
-			"button":[{"action":"click", "rating":4, "productId":'.455'},
-					{"action":"hover", "rating":4}],
-			".selector":[{"action":"click", "rating":4},
-					{"action":"hover", "rating":5}]		
-			
-
-		}
-	});
-
-})
-
-
-function showThem(param){
-	console.log(param);
-
-}
-
-*/
 
